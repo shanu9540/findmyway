@@ -117,8 +117,8 @@ export const getDestinations = async (req: Request, res: Response): Promise<any>
 // @route   GET /api/destinations/:id
 // @access  Public
 export const getDestinationById = async (req: Request, res: Response): Promise<any> => {
+  const { id } = req.params;
   try {
-    const { id } = req.params;
 
     const destination = await prisma.destination.findUnique({
       where: { id },

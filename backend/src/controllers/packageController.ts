@@ -130,8 +130,8 @@ export const getPackages = async (req: Request, res: Response): Promise<any> => 
 // @route   GET /api/packages/:id
 // @access  Public
 export const getPackageById = async (req: Request, res: Response): Promise<any> => {
+  const { id } = req.params;
   try {
-    const { id } = req.params;
 
     const travelPackage = await prisma.package.findUnique({
       where: { id },
