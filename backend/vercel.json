@@ -1,0 +1,10 @@
+{
+  "name": "findmyway-backend-shanu9540",
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/dist/index.js"
+    }
+  ]
+}
