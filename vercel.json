@@ -1,10 +1,12 @@
 {
   "services": {
     "backend": {
-      "root": "backend"
+      "root": "backend",
+      "entrypoint": "src/index.ts"
     },
     "frontend": {
-      "root": "frontend"
+      "root": "frontend",
+      "framework": "nextjs"
     }
   },
   "rewrites": [
