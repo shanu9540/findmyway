@@ -107,7 +107,7 @@ export const getPackages = async (req: Request, res: Response): Promise<any> => 
     const { mockDestinations } = await import('../utils/fallbackData.js');
     const allPkgs: any[] = [];
     mockDestinations.forEach(dest => {
-      dest.packages.forEach(pkg => {
+      dest.packages.forEach((pkg: any) => {
         allPkgs.push({
           ...pkg,
           destination: {
@@ -151,7 +151,7 @@ export const getPackageById = async (req: Request, res: Response): Promise<any> 
     let matchedPkg: any = null;
     let matchedDest: any = null;
     for (const dest of mockDestinations) {
-      const match = dest.packages.find(p => p.id === id);
+      const match = dest.packages.find((p: any) => p.id === id);
       if (match) {
         matchedPkg = match;
         matchedDest = dest;

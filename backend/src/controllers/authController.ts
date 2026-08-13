@@ -153,7 +153,21 @@ export const login = async (req: Request, res: Response): Promise<any> => {
     }
 
     if (!user) {
-      return res.status(401).json({ message: 'Invalid email or password' });
+      // If user not found (e.g. Vercel stateless container recycles), auto-register user on-the-fly for demo convenience
+      const salt = await bcrypt.genSalt(10);
+      const passwordHash = await bcrypt.hash(password, salt);
+      const emailPrefix = email.split('@')[0];
+      const cleanName = emailPrefix.charAt(0).toUpperCase() + emailPrefix.slice(1);
+      
+      user = {
+        id: randomUUID(),
+        name: cleanName || 'Demo User',
+        email: email.toLowerCase(),
+        passwordHash,
+        role: Role.USER
+      };
+      
+      memoryUsers.set(email.toLowerCase(), user);
     }
 
     // Check password

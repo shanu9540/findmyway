@@ -103,7 +103,7 @@ export const createBooking = async (req: Request, res: Response): Promise<any> =
         const match = dest.packages.find((p: any) => p.id === packageId);
         if (match) {
           travelPackage = {
-            ...match,
+            ...(match as any),
             destination: dest
           };
           break;

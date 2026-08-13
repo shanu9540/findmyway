@@ -131,7 +131,7 @@ export const getDestinations = async (req: Request, res: Response): Promise<any>
       thingsToDo: d.thingsToDo ? d.thingsToDo.split(',') : [],
       travelTips: d.travelTips ? d.travelTips.split(',') : [],
       reviews: [],
-      packages: d.packages ? d.packages.map(p => ({
+      packages: d.packages ? d.packages.map((p: any) => ({
         ...p,
         inclusions: p.inclusions ? p.inclusions.split(',') : [],
         exclusions: p.exclusions ? p.exclusions.split(',') : [],
@@ -292,7 +292,7 @@ export const getDestinationById = async (req: Request, res: Response): Promise<a
       thingsToDo: matched.thingsToDo ? matched.thingsToDo.split(',') : [],
       travelTips: matched.travelTips ? matched.travelTips.split(',') : [],
       reviews: [],
-      packages: matched.packages ? matched.packages.map(p => ({
+      packages: matched.packages ? matched.packages.map((p: any) => ({
         ...p,
         inclusions: p.inclusions ? p.inclusions.split(',') : [],
         exclusions: p.exclusions ? p.exclusions.split(',') : [],
