@@ -1,29 +1,24 @@
 {
-  "version": 2,
-  "builds": [
+  "services": {
+    "backend": {
+      "root": "backend"
+    },
+    "frontend": {
+      "root": "frontend"
+    }
+  },
+  "rewrites": [
     {
-      "src": "backend/src/index.ts",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": [
-          "backend/prisma/schema.prisma",
-          "backend/all_cities.json"
-        ]
+      "source": "/api/(.*)",
+      "destination": {
+        "service": "backend"
       }
     },
     {
-      "src": "frontend/package.json",
-      "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "backend/src/index.ts"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "frontend/package.json"
+      "source": "/(.*)",
+      "destination": {
+        "service": "frontend"
+      }
     }
   ]
 }
