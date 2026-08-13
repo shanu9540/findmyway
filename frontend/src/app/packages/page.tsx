@@ -303,10 +303,10 @@ function PackagesListingPageContent() {
                           </div>
                           
                           {/* Quick inclusions badges */}
-                          <div className="flex gap-4 text-xs font-semibold text-slate-500 mb-6 py-2 border-y border-slate-100">
-                            <span className="flex items-center"><Bed className="h-4 w-4 mr-1 text-teal-600" /> Hotel</span>
-                            <span className="flex items-center"><Utensils className="h-4 w-4 mr-1 text-teal-600" /> Meals</span>
-                            <span className="flex items-center"><Car className="h-4 w-4 mr-1 text-teal-600" /> Transit</span>
+                          <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs font-semibold text-slate-500 mb-6 py-2 border-y border-slate-100">
+                            <span className="flex items-center"><Bed className="h-4 w-4 mr-1.5 text-teal-600 shrink-0" /> {pkg.hotel || 'Hotel Included'}</span>
+                            <span className="flex items-center"><Utensils className="h-4 w-4 mr-1.5 text-teal-600 shrink-0" /> {pkg.meals || 'Meals Included'}</span>
+                            <span className="flex items-center"><Car className="h-4 w-4 mr-1.5 text-teal-600 shrink-0" /> {pkg.transportation || 'Transit Included'}</span>
                           </div>
                         </div>
 

@@ -3,8 +3,29 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import prisma from '../utils/prisma.js';
 import { Role } from '../types/enums.js';
+import { randomUUID } from 'crypto';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'supersecretjwtkeyforfindmyway123!';
+
+// Memory store for users in read-only environments like Vercel serverless
+interface MemoryUser {
+  id: string;
+  name: string;
+  email: string;
+  passwordHash: string;
+  role: string;
+}
+const memoryUsers = new Map<string, MemoryUser>();
+
+// Prepopulate with a default demo user
+const salt = bcrypt.genSaltSync(10);
+memoryUsers.set('sharmashanu9540@gmail.com', {
+  id: 'demo-user-id-12345',
+  name: 'Sameer Sharma',
+  email: 'sharmashanu9540@gmail.com',
+  passwordHash: bcrypt.hashSync('shanu9540', salt),
+  role: Role.ADMIN
+});
 
 // Helper to generate JWT Token
 const generateToken = (id: string, email: string, role: string) => {
@@ -28,10 +49,20 @@ export const register = async (req: Request, res: Response): Promise<any> => {
       return res.status(400).json({ message: 'Password must be at least 6 characters long' });
     }
 
-    // Check if user already exists
-    const userExists = await prisma.user.findUnique({
-      where: { email },
-    });
+    // Check memory store first
+    if (memoryUsers.has(email.toLowerCase())) {
+      return res.status(400).json({ message: 'User already exists with this email' });
+    }
+
+    let userExists = false;
+    try {
+      const dbUser = await prisma.user.findUnique({
+        where: { email },
+      });
+      if (dbUser) userExists = true;
+    } catch (e) {
+      console.warn('Database read failed in signup. Checking memory store...');
+    }
 
     if (userExists) {
       return res.status(400).json({ message: 'User already exists with this email' });
@@ -41,28 +72,53 @@ export const register = async (req: Request, res: Response): Promise<any> => {
     const salt = await bcrypt.genSalt(10);
     const passwordHash = await bcrypt.hash(password, salt);
 
-    // Create user. If it's the first user ever, make them ADMIN for convenience in development
-    const userCount = await prisma.user.count();
-    const role = userCount === 0 ? Role.ADMIN : Role.USER;
+    try {
+      // Try database create
+      const userCount = await prisma.user.count();
+      const role = userCount === 0 ? Role.ADMIN : Role.USER;
 
-    const user = await prisma.user.create({
-      data: {
+      const user = await prisma.user.create({
+        data: {
+          name,
+          email,
+          passwordHash,
+          role,
+        },
+      });
+
+      return res.status(201).json({
+        token: generateToken(user.id, user.email, user.role),
+        user: {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          role: user.role,
+        },
+      });
+    } catch (dbErr: any) {
+      console.warn('Database write failed on signup. Saving to memory store fallback:', dbErr.message);
+      
+      const role = memoryUsers.size === 0 ? Role.ADMIN : Role.USER;
+      const memUser: MemoryUser = {
+        id: randomUUID(),
         name,
-        email,
+        email: email.toLowerCase(),
         passwordHash,
-        role,
-      },
-    });
+        role
+      };
 
-    return res.status(201).json({
-      token: generateToken(user.id, user.email, user.role),
-      user: {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        role: user.role,
-      },
-    });
+      memoryUsers.set(email.toLowerCase(), memUser);
+
+      return res.status(201).json({
+        token: generateToken(memUser.id, memUser.email, memUser.role),
+        user: {
+          id: memUser.id,
+          name: memUser.name,
+          email: memUser.email,
+          role: memUser.role
+        }
+      });
+    }
   } catch (error: any) {
     console.error('Register error:', error);
     return res.status(500).json({ message: 'Internal Server Error', error: error.message });
@@ -80,10 +136,21 @@ export const login = async (req: Request, res: Response): Promise<any> => {
       return res.status(400).json({ message: 'Please provide email and password' });
     }
 
-    // Find user by email
-    const user = await prisma.user.findUnique({
-      where: { email },
-    });
+    let user: any = null;
+
+    try {
+      // Find user in database
+      user = await prisma.user.findUnique({
+        where: { email },
+      });
+    } catch (e) {
+      console.warn('Database read failed in login. Checking memory store...');
+    }
+
+    // Check memory store if not in DB
+    if (!user) {
+      user = memoryUsers.get(email.toLowerCase());
+    }
 
     if (!user) {
       return res.status(401).json({ message: 'Invalid email or password' });
@@ -137,29 +204,51 @@ export const googleLogin = async (req: Request, res: Response): Promise<any> => 
       return res.status(400).json({ message: 'Invalid Google payload' });
     }
 
-    // Check if user already exists
-    let user = await prisma.user.findUnique({
-      where: { email },
-    });
+    let user: any = null;
+
+    try {
+      // Check if user already exists in DB
+      user = await prisma.user.findUnique({
+        where: { email },
+      });
+    } catch (e) {
+      console.warn('Database read failed in googleLogin. Checking memory store...');
+    }
 
     if (!user) {
-      // Create a random password since they use Google Login
+      user = memoryUsers.get(email.toLowerCase());
+    }
+
+    if (!user) {
       const randomPassword = Math.random().toString(36).slice(-10) + googleId;
       const salt = await bcrypt.genSalt(10);
       const passwordHash = await bcrypt.hash(randomPassword, salt);
 
-      // Create new user
-      const userCount = await prisma.user.count();
-      const role = userCount === 0 ? Role.ADMIN : Role.USER;
+      try {
+        const userCount = await prisma.user.count();
+        const role = userCount === 0 ? Role.ADMIN : Role.USER;
 
-      user = await prisma.user.create({
-        data: {
+        user = await prisma.user.create({
+          data: {
+            name,
+            email,
+            passwordHash,
+            role,
+          },
+        });
+      } catch (dbErr) {
+        console.warn('Database write failed in googleLogin. Creating memory store fallback...');
+        
+        const role = memoryUsers.size === 0 ? Role.ADMIN : Role.USER;
+        user = {
+          id: randomUUID(),
           name,
-          email,
+          email: email.toLowerCase(),
           passwordHash,
-          role,
-        },
-      });
+          role
+        };
+        memoryUsers.set(email.toLowerCase(), user);
+      }
     }
 
     return res.status(200).json({
