@@ -115,9 +115,9 @@ export const getPackages = async (req: Request, res: Response): Promise<any> => 
             name: dest.name,
             country: dest.country,
             continent: dest.continent,
-            estimatedBudget: dest.price,
+            estimatedBudget: dest.estimatedBudget,
             rating: dest.rating,
-            images: dest.images
+            image: dest.image
           }
         });
       });
@@ -169,9 +169,9 @@ export const getPackageById = async (req: Request, res: Response): Promise<any> 
         name: matchedDest.name,
         country: matchedDest.country,
         continent: matchedDest.continent,
-        estimatedBudget: matchedDest.price,
+        estimatedBudget: matchedDest.estimatedBudget,
         rating: matchedDest.rating,
-        images: matchedDest.images
+        image: matchedDest.image
       }
     }));
   }

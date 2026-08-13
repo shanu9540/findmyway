@@ -94,21 +94,51 @@ export const getDestinations = async (req: Request, res: Response): Promise<any>
   } catch (error: any) {
     console.warn('Get destinations database failure. Invoking offline fallbacks:', error.message);
     const { mockDestinations } = await import('../utils/fallbackData.js');
-    return res.status(200).json(mockDestinations.map(d => ({
+    const { search, category, continent, region, maxPrice } = req.query;
+
+    let filtered = [...mockDestinations];
+
+    if (search) {
+      const q = String(search).toLowerCase();
+      filtered = filtered.filter(d =>
+        d.name.toLowerCase().includes(q) ||
+        d.city.toLowerCase().includes(q) ||
+        d.country.toLowerCase().includes(q) ||
+        d.popularAttractions.toLowerCase().includes(q)
+      );
+    }
+
+    if (category) {
+      filtered = filtered.filter(d => d.category.toLowerCase() === String(category).toLowerCase());
+    }
+
+    if (region) {
+      filtered = filtered.filter(d => d.region.toLowerCase() === String(region).toLowerCase());
+    }
+
+    if (continent) {
+      filtered = filtered.filter(d => d.continent.toLowerCase() === String(continent).toLowerCase());
+    }
+
+    if (maxPrice) {
+      filtered = filtered.filter(d => d.estimatedBudget <= parseFloat(String(maxPrice)));
+    }
+
+    return res.status(200).json(filtered.map(d => ({
       ...d,
-      gallery: d.images.split(','),
-      popularAttractions: d.popularAttractions.split(','),
-      thingsToDo: d.thingsToDo.split(','),
-      travelTips: d.travelTips.split(','),
+      gallery: d.gallery ? d.gallery.split(',') : [],
+      popularAttractions: d.popularAttractions ? d.popularAttractions.split(',') : [],
+      thingsToDo: d.thingsToDo ? d.thingsToDo.split(',') : [],
+      travelTips: d.travelTips ? d.travelTips.split(',') : [],
       reviews: [],
-      packages: d.packages.map(p => ({
+      packages: d.packages ? d.packages.map(p => ({
         ...p,
-        inclusions: p.inclusions.split(','),
-        exclusions: p.exclusions.split(','),
-        activities: p.activities.split(','),
-        availableDates: p.availableDates.split(','),
-        itineraryJson: JSON.parse(p.itinerary)
-      }))
+        inclusions: p.inclusions ? p.inclusions.split(',') : [],
+        exclusions: p.exclusions ? p.exclusions.split(',') : [],
+        activities: p.activities ? p.activities.split(',') : [],
+        availableDates: p.availableDates ? p.availableDates.split(',') : [],
+        itineraryJson: p.itinerary ? JSON.parse(p.itinerary) : null
+      })) : []
     })));
   }
 };
@@ -181,25 +211,25 @@ export const getDestinationById = async (req: Request, res: Response): Promise<a
     const matched = mockDestinations.find(d => d.id === id) || mockDestinations[0];
     return res.status(200).json({
       ...matched,
-      gallery: matched.images.split(','),
-      popularAttractions: matched.popularAttractions.split(','),
-      thingsToDo: matched.thingsToDo.split(','),
-      travelTips: matched.travelTips.split(','),
+      gallery: matched.gallery ? matched.gallery.split(',') : [],
+      popularAttractions: matched.popularAttractions ? matched.popularAttractions.split(',') : [],
+      thingsToDo: matched.thingsToDo ? matched.thingsToDo.split(',') : [],
+      travelTips: matched.travelTips ? matched.travelTips.split(',') : [],
       reviews: [],
-      packages: matched.packages.map(p => ({
+      packages: matched.packages ? matched.packages.map(p => ({
         ...p,
-        inclusions: p.inclusions.split(','),
-        exclusions: p.exclusions.split(','),
-        activities: p.activities.split(','),
-        availableDates: p.availableDates.split(','),
-        itineraryJson: JSON.parse(p.itinerary)
-      })),
+        inclusions: p.inclusions ? p.inclusions.split(',') : [],
+        exclusions: p.exclusions ? p.exclusions.split(',') : [],
+        activities: p.activities ? p.activities.split(',') : [],
+        availableDates: p.availableDates ? p.availableDates.split(',') : [],
+        itineraryJson: p.itinerary ? JSON.parse(p.itinerary) : null
+      })) : [],
       relatedDestinations: mockDestinations.filter(d => d.id !== matched.id).slice(0, 3).map(d => ({
         id: d.id,
         name: d.name,
         country: d.country,
-        image: d.images.split(',')[0],
-        estimatedBudget: d.price,
+        image: d.image,
+        estimatedBudget: d.estimatedBudget,
         rating: d.rating
       }))
     });
