@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+export const dynamic = 'force-dynamic';
+
+import React, { Suspense, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useSearchParams, useParams, useRouter } from 'next/navigation';
 import { Hotel, Calendar, Users, MapPin, Loader2, Star, Sparkles, ShieldCheck, HelpCircle, ArrowLeft, ArrowRight, Heart } from 'lucide-react';
@@ -8,7 +10,7 @@ import { useAuth } from '../../../context/AuthContext';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
-export default function StayDetailPage() {
+function StayDetailPageContent() {
   const { id } = useParams();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -318,5 +320,19 @@ export default function StayDetailPage() {
 
       </div>
     </div>
+  );
+}
+
+
+export default function StayDetailPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-slate-50 pt-32 flex flex-col items-center justify-center text-slate-800">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-emerald-600 mb-2"></div>
+        <p className="text-xs text-slate-400">Loading specs...</p>
+      </div>
+    }>
+      <StayDetailPageContent />
+    </Suspense>
   );
 }

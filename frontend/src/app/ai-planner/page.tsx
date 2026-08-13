@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+export const dynamic = 'force-dynamic';
+
+import React, { Suspense, useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useAuth } from '../../context/AuthContext';
 import { Sparkles, Calendar, DollarSign, ListTodo, MapPin, Info, Save, Clock, ChevronRight } from 'lucide-react';
@@ -9,7 +11,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
 const INTEREST_OPTIONS = ['Adventure', 'Food', 'Culture', 'Relaxation', 'Shopping', 'Nature'];
 
-export default function AIPlannerPage() {
+function AIPlannerPageContent() {
   const searchParams = useSearchParams();
   const { user, token } = useAuth();
 
@@ -284,5 +286,19 @@ export default function AIPlannerPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+
+export default function AIPlannerPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-slate-50 pt-32 flex flex-col items-center justify-center text-slate-800">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-emerald-600 mb-2"></div>
+        <p className="text-xs text-slate-400">Loading specs...</p>
+      </div>
+    }>
+      <AIPlannerPageContent />
+    </Suspense>
   );
 }

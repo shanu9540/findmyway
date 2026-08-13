@@ -1,10 +1,12 @@
 "use client";
 
-import React from 'react';
+export const dynamic = 'force-dynamic';
+
+import React, { Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ShieldAlert, RefreshCw, Compass } from 'lucide-react';
 
-export default function BookingCancelPage() {
+function BookingCancelPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const bookingId = searchParams.get('bookingId') || '';
@@ -46,5 +48,19 @@ export default function BookingCancelPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+
+export default function BookingCancelPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-slate-50 pt-32 flex flex-col items-center justify-center text-slate-800">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-emerald-600 mb-2"></div>
+        <p className="text-xs text-slate-400">Loading specs...</p>
+      </div>
+    }>
+      <BookingCancelPageContent />
+    </Suspense>
   );
 }

@@ -1,13 +1,15 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+export const dynamic = 'force-dynamic';
+
+import React, { Suspense, useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { ShieldCheck, Calendar, Users, Hotel, Loader2, User, Mail, Phone, MessageSquare, AlertCircle } from 'lucide-react';
 import { useAuth } from '../../../context/AuthContext';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
-export default function StayBookingPage() {
+function StayBookingPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { token, user, logout } = useAuth();
@@ -340,5 +342,19 @@ export default function StayBookingPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+
+export default function StayBookingPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-slate-50 pt-32 flex flex-col items-center justify-center text-slate-800">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-emerald-600 mb-2"></div>
+        <p className="text-xs text-slate-400">Loading specs...</p>
+      </div>
+    }>
+      <StayBookingPageContent />
+    </Suspense>
   );
 }

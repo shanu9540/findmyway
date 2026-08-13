@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+export const dynamic = 'force-dynamic';
+
+import React, { Suspense, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { Filter, Star, Clock, MapPin, SlidersHorizontal, Bed, Utensils, Car, Sparkles } from 'lucide-react';
@@ -18,7 +20,7 @@ const CONTINENT_OPTIONS = [
   { label: 'India', value: 'India' }
 ];
 
-export default function PackagesListingPage() {
+function PackagesListingPageContent() {
   const searchParams = useSearchParams();
 
   // Filter States
@@ -341,5 +343,19 @@ export default function PackagesListingPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+
+export default function PackagesListingPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-slate-50 pt-32 flex flex-col items-center justify-center text-slate-800">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-emerald-600 mb-2"></div>
+        <p className="text-xs text-slate-400">Loading specs...</p>
+      </div>
+    }>
+      <PackagesListingPageContent />
+    </Suspense>
   );
 }

@@ -40,3 +40,5 @@ out/
 # Prisma / local sqlite databases
 *.db
 *.db-journal
+
+.vercel

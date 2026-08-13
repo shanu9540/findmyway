@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+export const dynamic = 'force-dynamic';
+
+import React, { Suspense, useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '../../context/AuthContext';
@@ -8,7 +10,7 @@ import { Calendar, Heart, Sparkles, User, Settings, LayoutDashboard, ChevronRigh
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
-export default function UserDashboardPage() {
+function UserDashboardPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { user, token, logout, wishlist, toggleWishlist } = useAuth();
@@ -552,5 +554,19 @@ export default function UserDashboardPage() {
         </div>
       )}
     </div>
+  );
+}
+
+
+export default function UserDashboardPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-slate-50 pt-32 flex flex-col items-center justify-center text-slate-800">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-emerald-600 mb-2"></div>
+        <p className="text-xs text-slate-400">Loading specs...</p>
+      </div>
+    }>
+      <UserDashboardPageContent />
+    </Suspense>
   );
 }
