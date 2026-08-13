@@ -3,7 +3,9 @@
 import React, { useState } from 'react';
 import { DollarSign, Landmark, Sparkles, Plane, Hotel, Utensils, Compass, Footprints, Info, Lightbulb } from 'lucide-react';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+const API_URL = typeof window === 'undefined'
+  ? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}/api` : 'http://localhost:5000/api')
+  : (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api');
 
 export default function AIBudgeterPage() {
   // Input states

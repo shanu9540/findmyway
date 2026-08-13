@@ -7,7 +7,9 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '../../../context/AuthContext';
 import { Plane, Star, ArrowRight, ShieldCheck, CreditCard, Loader2, Compass, AlertCircle } from 'lucide-react';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+const API_URL = typeof window === 'undefined'
+  ? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}/api` : 'http://localhost:5000/api')
+  : (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api');
 
 function FlightBookingPageContent() {
   const router = useRouter();

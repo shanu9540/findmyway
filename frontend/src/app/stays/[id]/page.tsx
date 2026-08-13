@@ -8,7 +8,9 @@ import { useSearchParams, useParams, useRouter } from 'next/navigation';
 import { Hotel, Calendar, Users, MapPin, Loader2, Star, Sparkles, ShieldCheck, HelpCircle, ArrowLeft, ArrowRight, Heart } from 'lucide-react';
 import { useAuth } from '../../../context/AuthContext';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+const API_URL = typeof window === 'undefined'
+  ? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}/api` : 'http://localhost:5000/api')
+  : (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api');
 
 function StayDetailPageContent() {
   const { id } = useParams();

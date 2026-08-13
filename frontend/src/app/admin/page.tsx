@@ -5,7 +5,9 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '../../context/AuthContext';
 import { ShieldCheck, BarChart3, MapPin, Calendar, Users, DollarSign, Plus, Edit2, Trash2, Settings, ShieldAlert, Sparkles, Check, X } from 'lucide-react';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+const API_URL = typeof window === 'undefined'
+  ? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}/api` : 'http://localhost:5000/api')
+  : (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api');
 
 export default function AdminPanelPage() {
   const router = useRouter();

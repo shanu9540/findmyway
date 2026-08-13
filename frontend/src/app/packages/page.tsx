@@ -7,7 +7,9 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { Filter, Star, Clock, MapPin, SlidersHorizontal, Bed, Utensils, Car, Sparkles } from 'lucide-react';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+const API_URL = typeof window === 'undefined'
+  ? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}/api` : 'http://localhost:5000/api')
+  : (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api');
 
 const CONTINENT_OPTIONS = [
   { label: 'Asia', value: 'Asia' },

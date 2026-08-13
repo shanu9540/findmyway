@@ -8,7 +8,9 @@ import Link from 'next/link';
 import { useAuth } from '../../../context/AuthContext';
 import { CreditCard, ShieldAlert, Sparkles, CheckCircle2, ArrowLeft, ArrowUpRight, Check, Printer, ShieldCheck } from 'lucide-react';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+const API_URL = typeof window === 'undefined'
+  ? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}/api` : 'http://localhost:5000/api')
+  : (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api');
 
 function MockPayPageContent() {
   const searchParams = useSearchParams();
