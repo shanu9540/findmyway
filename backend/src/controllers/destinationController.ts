@@ -182,6 +182,82 @@ export const getDestinationById = async (req: Request, res: Response): Promise<a
 
     const formatted = formatDestination(destination);
 
+    // If destination has no packages, generate high-quality fallback packages dynamically
+    if (!formatted.packages || formatted.packages.length === 0) {
+      formatted.packages = [
+        {
+          id: `pkg-${destination.id}-1`,
+          destinationId: destination.id,
+          title: `${destination.name} Classic Highlight Tour`,
+          image: destination.image || 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=800&q=80',
+          gallery: destination.gallery || '',
+          description: `Experience the best landmarks, sightseeing spots, and cultural highlights of ${destination.name} on this premium custom tour.`,
+          duration: 5,
+          nights: 4,
+          pricePerAdult: Math.round(destination.estimatedBudget * 1.2),
+          pricePerChild: Math.round(destination.estimatedBudget * 0.8),
+          originalPrice: Math.round(destination.estimatedBudget * 1.5),
+          discount: 20,
+          rating: destination.rating || 4.5,
+          reviewCount: destination.reviewCount || 12,
+          category: 'Cultural',
+          availableDates: '2026-10-15, 2026-11-20',
+          hotel: `${destination.name} Grand Palace & Suites`,
+          meals: 'Daily Breakfast & Dinner Included',
+          transportation: 'Private AC Cab Transfers',
+          activities: 'Guided Sightseeing, Monument Entry, Heritage Walks',
+          inclusions: ['4-Star Premium Hotel', 'Sightseeing Entry Tickets', 'Daily Breakfast & Dinner', 'Private Airport Transfers'],
+          exclusions: ['Flights', 'Lunch', 'Personal shopping expenses'],
+          itineraryJson: {
+            destination: destination.name,
+            daysCount: 5,
+            totalEstimatedCost: Math.round(destination.estimatedBudget * 1.2),
+            itinerary: [
+              { day: 1, theme: `Arrival in ${destination.name}`, activities: [{ time: 'Morning', activity: 'Arrival & check-in to resort', location: `${destination.name} Grand Palace`, cost: 0 }, { time: 'Evening', activity: 'Sunset Leisure Walk', location: 'City Center', cost: 0 }] },
+              { day: 2, theme: 'Guided Landmark Excursion', activities: [{ time: 'Morning', activity: 'Scenic sightseeing tour of top attractions', location: destination.name, cost: 0 }] },
+              { day: 3, theme: 'Cultural Highlights & Markets', activities: [{ time: 'Morning', activity: 'Explore local traditional markets and foods', location: 'Local Bazaars', cost: 0 }] },
+              { day: 4, theme: 'Leisure Day & Shopping', activities: [{ time: 'Morning', activity: 'Self-guided walks and souvenir shopping', location: 'Local Area', cost: 0 }] },
+              { day: 5, theme: 'Departure Transfers', activities: [{ time: 'Morning', activity: 'Check-out & airport drop-off transfers', location: 'Airport', cost: 0 }] }
+            ]
+          }
+        },
+        {
+          id: `pkg-${destination.id}-2`,
+          destinationId: destination.id,
+          title: `${destination.name} Premium Adventure Getaway`,
+          image: destination.image || 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=800&q=80',
+          gallery: destination.gallery || '',
+          description: `An immersive premium vacation package showcasing the stunning views, top excursions, and hidden gems of ${destination.name}.`,
+          duration: 3,
+          nights: 2,
+          pricePerAdult: Math.round(destination.estimatedBudget * 0.9),
+          pricePerChild: Math.round(destination.estimatedBudget * 0.6),
+          originalPrice: Math.round(destination.estimatedBudget * 1.1),
+          discount: 15,
+          rating: destination.rating || 4.6,
+          reviewCount: destination.reviewCount || 8,
+          category: 'Adventure',
+          availableDates: '2026-10-25, 2026-12-05',
+          hotel: `${destination.name} Heritage Resort`,
+          meals: 'Daily Breakfast Included',
+          transportation: 'Dedicated AC Transport',
+          activities: 'Adventure Treks, Local Explorations, Photography',
+          inclusions: ['4-Star Heritage Stay', 'Guided Trekking Excursion', 'Daily Breakfast Buffet', 'Railway/Airport Transfers'],
+          exclusions: ['Flights', 'Lunch & Dinner', 'Personal shopping'],
+          itineraryJson: {
+            destination: destination.name,
+            daysCount: 3,
+            totalEstimatedCost: Math.round(destination.estimatedBudget * 0.9),
+            itinerary: [
+              { day: 1, theme: 'Welcome & Resort Briefing', activities: [{ time: 'Morning', activity: 'Arrival & check-in', location: 'Resort lobby', cost: 0 }] },
+              { day: 2, theme: 'Adventure Activity Day', activities: [{ time: 'Morning', activity: 'Guided local adventure activity', location: destination.name, cost: 0 }] },
+              { day: 3, theme: 'Farewell Transfers', activities: [{ time: 'Morning', activity: 'Check-out & departure transfers', location: 'Airport', cost: 0 }] }
+            ]
+          }
+        }
+      ];
+    }
+
     // Fetch related destinations (same continent, excluding current)
     const related = await prisma.destination.findMany({
       where: {

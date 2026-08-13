@@ -739,7 +739,7 @@ const RAW_DESTINATIONS = [
     attractions: 'Eiffel Tower, Louvre Museum, Notre-Dame',
     category: 'Romantic',
     image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80',
-    gallery: 'https://images.unsplash.com/photo-1499856134248-712176d6c86f?auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1563841930606-67e2bde48b7e?auto=format&fit=crop&w=800&q=80'
+    gallery: 'https://images.unsplash.com/photo-1499856134248-712176d6c86f?auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1509060464153-44667396260f?auto=format&fit=crop&w=800&q=80'
   },
   {
     city: 'Nice',
