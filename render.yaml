@@ -12,7 +12,7 @@ services:
       - key: JWT_SECRET
         generateValue: true
       - key: DUFFEL_ACCESS_TOKEN
-        value: duffel_test_YOUR_TEST_TOKEN_HERE
+        sync: false
       - key: ACCOMMODATION_PROVIDER
         value: mock
       - key: DATABASE_URL
