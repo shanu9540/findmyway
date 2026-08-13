@@ -1,0 +1,152 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String        @id @default(uuid())
+  name          String
+  email         String        @unique
+  passwordHash  String
+  role          String        @default("USER") // "USER" | "ADMIN"
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  bookings      Booking[]
+  duffelBookings DuffelBooking[]
+  reviews       Review[]
+  aiItineraries AIItinerary[]
+  wishlists     Wishlist[]
+}
+
+model Destination {
+  id                 String     @id @default(uuid())
+  name               String
+  city               String     @default("")
+  country            String
+  continent          String     @default("")
+  region             String     @default("")
+  description        String
+  image              String     @default("")
+  gallery            String     @default("") // comma-separated
+  bestTimeToVisit    String     @default("")
+  averageDuration    String     @default("")
+  estimatedBudget    Float      @default(0.0) // In INR
+  rating             Float      @default(0.0)
+  reviewCount        Int        @default(0)
+  popularAttractions String     @default("") // comma-separated
+  thingsToDo         String     @default("") // comma-separated
+  travelTips         String     @default("") // comma-separated
+  createdAt          DateTime   @default(now())
+  updatedAt          DateTime   @updatedAt
+  packages           Package[]
+  reviews            Review[]
+  wishlists          Wishlist[]
+}
+
+model Package {
+  id             String      @id @default(uuid())
+  destinationId  String
+  destination    Destination @relation(fields: [destinationId], references: [id], onDelete: Cascade)
+  title          String
+  image          String      @default("")
+  gallery        String      @default("") // comma-separated
+  description    String
+  duration       Int         @default(1) // Days
+  nights         Int         @default(0)
+  pricePerAdult  Float       @default(0.0) // In INR
+  pricePerChild  Float       @default(0.0) // In INR
+  originalPrice  Float       @default(0.0) // In INR
+  discount       Float       @default(0.0) // percentage
+  rating         Float       @default(0.0)
+  reviewCount    Int         @default(0)
+  category       String      @default("") // Adventure, Luxury, Budget, Family, Romantic, Trending
+  availableDates String      @default("") // comma-separated
+  hotel          String      @default("")
+  meals          String      @default("")
+  transportation String      @default("")
+  activities     String      @default("") // comma-separated
+  itinerary      String      @default("") // JSON string day-by-day
+  inclusions     String      @default("") // comma-separated
+  exclusions     String      @default("") // comma-separated
+  bookings       Booking[]
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+}
+
+model Booking {
+  id              String        @id @default(uuid())
+  userId          String
+  user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  packageId       String
+  package         Package       @relation(fields: [packageId], references: [id], onDelete: Cascade)
+  fullName        String        @default("")
+  email           String        @default("")
+  phone           String        @default("")
+  travelDate      DateTime
+  adultsCount     Int           @default(1)
+  childrenCount   Int           @default(0)
+  roomsCount      Int           @default(1)
+  specialRequests String?
+  subtotal        Float         @default(0.0)
+  taxes           Float         @default(0.0)
+  discount        Float         @default(0.0)
+  totalPrice      Float         @default(0.0)
+  status          String        @default("Confirmed") // "Confirmed", "Pending", "Cancelled", "Completed"
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+model Review {
+  id            String      @id @default(uuid())
+  userId        String
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  destinationId String
+  destination   Destination @relation(fields: [destinationId], references: [id], onDelete: Cascade)
+  rating        Int
+  comment       String
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+model AIItinerary {
+  id                String   @id @default(uuid())
+  userId            String?
+  user              User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  destination       String
+  days              Int
+  budget            Float
+  interests         String   // SQLite doesn't support String[], storing comma-separated
+  generatedPlanJson String   // Store full package itinerary as JSON string
+  createdAt         DateTime @default(now())
+}
+
+model Wishlist {
+  id            String      @id @default(uuid())
+  userId        String
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  destinationId String
+  destination   Destination @relation(fields: [destinationId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, destinationId])
+}
+
+model DuffelBooking {
+  id                String   @id @default(uuid())
+  userId            String
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  provider          String   // "duffel"
+  providerOrderId   String   // Duffel order_id or stay_booking_id
+  bookingReference  String   // Duffel booking reference / PNR
+  status            String   // Confirmed, Pending, Cancelled
+  type              String   // "flight" | "hotel"
+  amount            Float
+  currency          String
+  passengerInfo     String   // JSON string of passengers
+  itinerary         String   // JSON string of flight slices or hotel stay details
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}

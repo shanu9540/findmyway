@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0f766e;
+  --color-secondary: #f59e0b;
+  --color-dark: #0f172a;
+  --color-brand-bg: #f8fafc;
+}
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --primary-color: #0f766e;
+  --secondary-color: #f59e0b;
+  --dark-color: #0f172a;
+  --white-color: #ffffff;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  overflow-x: hidden;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-dark {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Card custom styles */
+.custom-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.custom-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px -3px rgba(15, 118, 110, 0.08), 0 4px 6px -2px rgba(15, 118, 110, 0.03);
+}
+
+/* Inputs and Buttons styling */
+.custom-input {
+  border-radius: 10px;
+  border: 1.5px solid rgba(226, 232, 240, 1);
+  padding: 10px 14px;
+  font-size: 15px;
+  color: #0f172a;
+  background-color: #ffffff;
+  transition: all 0.2s ease-in-out;
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: #0f766e;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.15);
+}
+
+.btn-primary-custom {
+  background-color: #0f766e;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px -1px rgba(15, 118, 110, 0.2);
+}
+
+.btn-primary-custom:hover {
+  background-color: #0d5c56;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px -1px rgba(15, 118, 110, 0.3);
+}
+
+.btn-secondary-custom {
+  background-color: #f59e0b;
+  color: #0f172a;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.2);
+}
+
+.btn-secondary-custom:hover {
+  background-color: #d97706;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px -1px rgba(245, 158, 11, 0.3);
+}
+
+/* Subtle pulse animation for loaders */
+@keyframes skeleton-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .4;
+  }
+}
+
+.skeleton {
+  animation: skeleton-pulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  background-color: #e2e8f0;
+}

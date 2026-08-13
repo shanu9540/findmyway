@@ -1,0 +1,1136 @@
+[
+  {
+    "city": "Delhi",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Mumbai",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1566552881560-0be862a7c445?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Goa",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Jaipur",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1599661046289-e31887846eac?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Udaipur",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1515488042361-404e9250afef?auto=format&fit=crop&w=800&q=80",
+    "category": "Romantic"
+  },
+  {
+    "city": "Jaisalmer",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=800&q=80",
+    "category": "Adventure"
+  },
+  {
+    "city": "Jodhpur",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1562184647-7598b375fc43?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Manali",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=800&q=80",
+    "category": "Adventure"
+  },
+  {
+    "city": "Shimla",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1597075687490-8f673c6c17f6?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Srinagar",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1598283733679-b1d5c2199b50?auto=format&fit=crop&w=800&q=80",
+    "category": "Romantic"
+  },
+  {
+    "city": "Gulmarg",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80",
+    "category": "Adventure"
+  },
+  {
+    "city": "Leh",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?auto=format&fit=crop&w=800&q=80",
+    "category": "Adventure"
+  },
+  {
+    "city": "Ladakh",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?auto=format&fit=crop&w=800&q=80",
+    "category": "Adventure"
+  },
+  {
+    "city": "Rishikesh",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1571536802807-304bc1b3a251?auto=format&fit=crop&w=800&q=80",
+    "category": "Adventure"
+  },
+  {
+    "city": "Varanasi",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1561361513-2d000a50f0db?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Agra",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Munnar",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1506382813144-8464fa9d4730?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Kochi",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Ooty",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Darjeeling",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1557223562-6c77ef16210f?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Gangtok",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1618083707368-b3823daa2726?auto=format&fit=crop&w=800&q=80",
+    "category": "Adventure"
+  },
+  {
+    "city": "Port Blair",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Kavaratti",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Hyderabad",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1608958416715-aa4bb5a0a3d4?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Bengaluru",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Chennai",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Kolkata",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1558431382-27e303142255?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Amritsar",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1514222134-b57cbb8ce073?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Pune",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1601999109332-542b18dbec97?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Alleppey",
+    "country": "India",
+    "continent": "India",
+    "image": "https://images.unsplash.com/photo-1593693411515-c202e974fe08?auto=format&fit=crop&w=800&q=80",
+    "category": "Romantic"
+  },
+  {
+    "city": "Tokyo",
+    "country": "Japan",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80",
+    "category": "Adventure"
+  },
+  {
+    "city": "Kyoto",
+    "country": "Japan",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Osaka",
+    "country": "Japan",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1590559899731-a382839e5549?auto=format&fit=crop&w=800&q=80",
+    "category": "Food"
+  },
+  {
+    "city": "Seoul",
+    "country": "South Korea",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=800&q=80",
+    "category": "Trending"
+  },
+  {
+    "city": "Busan",
+    "country": "South Korea",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1598970434795-0c54fe7c0648?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Jeju Island",
+    "country": "South Korea",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1517089596392-db9a5e9478cc?auto=format&fit=crop&w=800&q=80",
+    "category": "Nature"
+  },
+  {
+    "city": "Singapore",
+    "country": "Singapore",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=800&q=80",
+    "category": "Trending"
+  },
+  {
+    "city": "Bangkok",
+    "country": "Thailand",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=800&q=80",
+    "category": "Food"
+  },
+  {
+    "city": "Phuket",
+    "country": "Thailand",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Chiang Mai",
+    "country": "Thailand",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1563492065561-9f5a49a6fe0e?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Kuala Lumpur",
+    "country": "Malaysia",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=800&q=80",
+    "category": "Trending"
+  },
+  {
+    "city": "Langkawi",
+    "country": "Malaysia",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1541093113199-a2e9d84e903f?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Penang",
+    "country": "Malaysia",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1517089596392-db9a5e9478cc?auto=format&fit=crop&w=800&q=80",
+    "category": "Food"
+  },
+  {
+    "city": "Kathmandu",
+    "country": "Nepal",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1542856391-010fb87dcfed?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Pokhara",
+    "country": "Nepal",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80",
+    "category": "Adventure"
+  },
+  {
+    "city": "Colombo",
+    "country": "Sri Lanka",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1568240409418-47209772ee57?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Galle",
+    "country": "Sri Lanka",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Kandy",
+    "country": "Sri Lanka",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1568240409418-47209772ee57?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Male",
+    "country": "Maldives",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Maafushi",
+    "country": "Maldives",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Port Louis",
+    "country": "Mauritius",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Grand Baie",
+    "country": "Mauritius",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Istanbul",
+    "country": "Turkey",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Cappadocia",
+    "country": "Turkey",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?auto=format&fit=crop&w=800&q=80",
+    "category": "Adventure"
+  },
+  {
+    "city": "Antalya",
+    "country": "Turkey",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1527838832700-50592524df7e?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Dubai",
+    "country": "UAE",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80",
+    "category": "Luxury"
+  },
+  {
+    "city": "Abu Dhabi",
+    "country": "UAE",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1580674235078-71e3a152c938?auto=format&fit=crop&w=800&q=80",
+    "category": "Luxury"
+  },
+  {
+    "city": "Hanoi",
+    "country": "Vietnam",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80",
+    "category": "Food"
+  },
+  {
+    "city": "Halong Bay",
+    "country": "Vietnam",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80",
+    "category": "Nature"
+  },
+  {
+    "city": "Ho Chi Minh",
+    "country": "Vietnam",
+    "continent": "Asia",
+    "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80",
+    "category": "Food"
+  },
+  {
+    "city": "Paris",
+    "country": "France",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80",
+    "category": "Romantic"
+  },
+  {
+    "city": "Nice",
+    "country": "France",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Lyon",
+    "country": "France",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1499856134248-712176d6c86f?auto=format&fit=crop&w=800&q=80",
+    "category": "Food"
+  },
+  {
+    "city": "London",
+    "country": "UK",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1513635269975-59663e0ca1ad?auto=format&fit=crop&w=800&q=80",
+    "category": "Trending"
+  },
+  {
+    "city": "Edinburgh",
+    "country": "UK",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Bath",
+    "country": "UK",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1529655683826-aba9b3e21f66?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Rome",
+    "country": "Italy",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Venice",
+    "country": "Italy",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?auto=format&fit=crop&w=800&q=80",
+    "category": "Romantic"
+  },
+  {
+    "city": "Florence",
+    "country": "Italy",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Milan",
+    "country": "Italy",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1529260830199-445824838d28?auto=format&fit=crop&w=800&q=80",
+    "category": "Luxury"
+  },
+  {
+    "city": "Barcelona",
+    "country": "Spain",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1583422409516-2895a77efedd?auto=format&fit=crop&w=800&q=80",
+    "category": "Trending"
+  },
+  {
+    "city": "Madrid",
+    "country": "Spain",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Seville",
+    "country": "Spain",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1511527661048-7fe73d85e9a4?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Amsterdam",
+    "country": "Netherlands",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?auto=format&fit=crop&w=800&q=80",
+    "category": "Trending"
+  },
+  {
+    "city": "Rotterdam",
+    "country": "Netherlands",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1490131895488-924a4094ec6d?auto=format&fit=crop&w=800&q=80",
+    "category": "Trending"
+  },
+  {
+    "city": "Prague",
+    "country": "Czech Republic",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Vienna",
+    "country": "Austria",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Budapest",
+    "country": "Hungary",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Berlin",
+    "country": "Germany",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1509136561182-890d14d8525b?auto=format&fit=crop&w=800&q=80",
+    "category": "Trending"
+  },
+  {
+    "city": "Munich",
+    "country": "Germany",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1509136561182-890d14d8525b?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Zurich",
+    "country": "Switzerland",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80",
+    "category": "Luxury"
+  },
+  {
+    "city": "Interlaken",
+    "country": "Switzerland",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?auto=format&fit=crop&w=800&q=80",
+    "category": "Adventure"
+  },
+  {
+    "city": "Geneva",
+    "country": "Switzerland",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Lucerne",
+    "country": "Switzerland",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Santorini",
+    "country": "Greece",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=800&q=80",
+    "category": "Romantic"
+  },
+  {
+    "city": "Athens",
+    "country": "Greece",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Mykonos",
+    "country": "Greece",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Lisbon",
+    "country": "Portugal",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1509840144525-4c55a4ecd067?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Porto",
+    "country": "Portugal",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1509840144525-4c55a4ecd067?auto=format&fit=crop&w=800&q=80",
+    "category": "Food"
+  },
+  {
+    "city": "Dublin",
+    "country": "Ireland",
+    "continent": "Europe",
+    "image": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "New York",
+    "country": "USA",
+    "continent": "North America",
+    "image": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=800&q=80",
+    "category": "Trending"
+  },
+  {
+    "city": "Los Angeles",
+    "country": "USA",
+    "continent": "North America",
+    "image": "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=800&q=80",
+    "category": "Trending"
+  },
+  {
+    "city": "San Francisco",
+    "country": "USA",
+    "continent": "North America",
+    "image": "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=800&q=80",
+    "category": "Trending"
+  },
+  {
+    "city": "Las Vegas",
+    "country": "USA",
+    "continent": "North America",
+    "image": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80",
+    "category": "Adventure"
+  },
+  {
+    "city": "Chicago",
+    "country": "USA",
+    "continent": "North America",
+    "image": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Miami",
+    "country": "USA",
+    "continent": "North America",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Orlando",
+    "country": "USA",
+    "continent": "North America",
+    "image": "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=800&q=80",
+    "category": "Family"
+  },
+  {
+    "city": "Washington DC",
+    "country": "USA",
+    "continent": "North America",
+    "image": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Seattle",
+    "country": "USA",
+    "continent": "North America",
+    "image": "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=800&q=80",
+    "category": "Trending"
+  },
+  {
+    "city": "Boston",
+    "country": "USA",
+    "continent": "North America",
+    "image": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Toronto",
+    "country": "Canada",
+    "continent": "North America",
+    "image": "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80",
+    "category": "Trending"
+  },
+  {
+    "city": "Vancouver",
+    "country": "Canada",
+    "continent": "North America",
+    "image": "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80",
+    "category": "Nature"
+  },
+  {
+    "city": "Montreal",
+    "country": "Canada",
+    "continent": "North America",
+    "image": "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Quebec City",
+    "country": "Canada",
+    "continent": "North America",
+    "image": "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Mexico City",
+    "country": "Mexico",
+    "continent": "North America",
+    "image": "https://images.unsplash.com/photo-1512813583145-ac0528ef3c3e?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Cancun",
+    "country": "Mexico",
+    "continent": "North America",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Tulum",
+    "country": "Mexico",
+    "continent": "North America",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Guadalajara",
+    "country": "Mexico",
+    "continent": "North America",
+    "image": "https://images.unsplash.com/photo-1512813583145-ac0528ef3c3e?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Havana",
+    "country": "Cuba",
+    "continent": "North America",
+    "image": "https://images.unsplash.com/photo-1512813583145-ac0528ef3c3e?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Varadero",
+    "country": "Cuba",
+    "continent": "North America",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Rio de Janeiro",
+    "country": "Brazil",
+    "continent": "South America",
+    "image": "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=800&q=80",
+    "category": "Trending"
+  },
+  {
+    "city": "Sao Paulo",
+    "country": "Brazil",
+    "continent": "South America",
+    "image": "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Salvador",
+    "country": "Brazil",
+    "continent": "South America",
+    "image": "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Buenos Aires",
+    "country": "Argentina",
+    "continent": "South America",
+    "image": "https://images.unsplash.com/photo-1568289463675-15a3f2d2427a?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Bariloche",
+    "country": "Argentina",
+    "continent": "South America",
+    "image": "https://images.unsplash.com/photo-1568289463675-15a3f2d2427a?auto=format&fit=crop&w=800&q=80",
+    "category": "Adventure"
+  },
+  {
+    "city": "Santiago",
+    "country": "Chile",
+    "continent": "South America",
+    "image": "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Valparaiso",
+    "country": "Chile",
+    "continent": "South America",
+    "image": "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Lima",
+    "country": "Peru",
+    "continent": "South America",
+    "image": "https://images.unsplash.com/photo-1585647347483-22b66260dfff?auto=format&fit=crop&w=800&q=80",
+    "category": "Food"
+  },
+  {
+    "city": "Cusco",
+    "country": "Peru",
+    "continent": "South America",
+    "image": "https://images.unsplash.com/photo-1585647347483-22b66260dfff?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Machu Picchu",
+    "country": "Peru",
+    "continent": "South America",
+    "image": "https://images.unsplash.com/photo-1585647347483-22b66260dfff?auto=format&fit=crop&w=800&q=80",
+    "category": "Adventure"
+  },
+  {
+    "city": "Bogota",
+    "country": "Colombia",
+    "continent": "South America",
+    "image": "https://images.unsplash.com/photo-1568289463675-15a3f2d2427a?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Cartagena",
+    "country": "Colombia",
+    "continent": "South America",
+    "image": "https://images.unsplash.com/photo-1568289463675-15a3f2d2427a?auto=format&fit=crop&w=800&q=80",
+    "category": "Romantic"
+  },
+  {
+    "city": "Medellin",
+    "country": "Colombia",
+    "continent": "South America",
+    "image": "https://images.unsplash.com/photo-1568289463675-15a3f2d2427a?auto=format&fit=crop&w=800&q=80",
+    "category": "Trending"
+  },
+  {
+    "city": "Quito",
+    "country": "Ecuador",
+    "continent": "South America",
+    "image": "https://images.unsplash.com/photo-1585647347483-22b66260dfff?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Galapagos",
+    "country": "Ecuador",
+    "continent": "South America",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "category": "Nature"
+  },
+  {
+    "city": "Cairo",
+    "country": "Egypt",
+    "continent": "Africa",
+    "image": "https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Luxor",
+    "country": "Egypt",
+    "continent": "Africa",
+    "image": "https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Aswan",
+    "country": "Egypt",
+    "continent": "Africa",
+    "image": "https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Cape Town",
+    "country": "South Africa",
+    "continent": "Africa",
+    "image": "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Johannesburg",
+    "country": "South Africa",
+    "continent": "Africa",
+    "image": "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Kruger",
+    "country": "South Africa",
+    "continent": "Africa",
+    "image": "https://images.unsplash.com/photo-1489493887462-402b7264e619?auto=format&fit=crop&w=800&q=80",
+    "category": "Adventure"
+  },
+  {
+    "city": "Nairobi",
+    "country": "Kenya",
+    "continent": "Africa",
+    "image": "https://images.unsplash.com/photo-1489493887462-402b7264e619?auto=format&fit=crop&w=800&q=80",
+    "category": "Nature"
+  },
+  {
+    "city": "Mombasa",
+    "country": "Kenya",
+    "continent": "Africa",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Zanzibar",
+    "country": "Tanzania",
+    "continent": "Africa",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Stone Town",
+    "country": "Tanzania",
+    "continent": "Africa",
+    "image": "https://images.unsplash.com/photo-1489493887462-402b7264e619?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Marrakech",
+    "country": "Morocco",
+    "continent": "Africa",
+    "image": "https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Casablanca",
+    "country": "Morocco",
+    "continent": "Africa",
+    "image": "https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&w=800&q=80",
+    "category": "Trending"
+  },
+  {
+    "city": "Fes",
+    "country": "Morocco",
+    "continent": "Africa",
+    "image": "https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Victoria Falls",
+    "country": "Zimbabwe",
+    "continent": "Africa",
+    "image": "https://images.unsplash.com/photo-1489493887462-402b7264e619?auto=format&fit=crop&w=800&q=80",
+    "category": "Adventure"
+  },
+  {
+    "city": "Mahe",
+    "country": "Seychelles",
+    "continent": "Africa",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Sydney",
+    "country": "Australia",
+    "continent": "Australia & Oceania",
+    "image": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=800&q=80",
+    "category": "Trending"
+  },
+  {
+    "city": "Melbourne",
+    "country": "Australia",
+    "continent": "Australia & Oceania",
+    "image": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=800&q=80",
+    "category": "Food"
+  },
+  {
+    "city": "Brisbane",
+    "country": "Australia",
+    "continent": "Australia & Oceania",
+    "image": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Gold Coast",
+    "country": "Australia",
+    "continent": "Australia & Oceania",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "category": "Adventure"
+  },
+  {
+    "city": "Cairns",
+    "country": "Australia",
+    "continent": "Australia & Oceania",
+    "image": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=800&q=80",
+    "category": "Adventure"
+  },
+  {
+    "city": "Perth",
+    "country": "Australia",
+    "continent": "Australia & Oceania",
+    "image": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Adelaide",
+    "country": "Australia",
+    "continent": "Australia & Oceania",
+    "image": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=800&q=80",
+    "category": "Food"
+  },
+  {
+    "city": "Hobart",
+    "country": "Australia",
+    "continent": "Australia & Oceania",
+    "image": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Auckland",
+    "country": "New Zealand",
+    "continent": "Australia & Oceania",
+    "image": "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Queenstown",
+    "country": "New Zealand",
+    "continent": "Australia & Oceania",
+    "image": "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80",
+    "category": "Adventure"
+  },
+  {
+    "city": "Rotorua",
+    "country": "New Zealand",
+    "continent": "Australia & Oceania",
+    "image": "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Suva",
+    "country": "Fiji",
+    "continent": "Australia & Oceania",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Nadi",
+    "country": "Fiji",
+    "continent": "Australia & Oceania",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Bora Bora",
+    "country": "French Polynesia",
+    "continent": "Australia & Oceania",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "category": "Romantic"
+  },
+  {
+    "city": "Papeete",
+    "country": "French Polynesia",
+    "continent": "Australia & Oceania",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "category": "Relaxation"
+  },
+  {
+    "city": "Doha",
+    "country": "Qatar",
+    "continent": "Middle East",
+    "image": "https://images.unsplash.com/photo-1580674235078-71e3a152c938?auto=format&fit=crop&w=800&q=80",
+    "category": "Trending"
+  },
+  {
+    "city": "Muscat",
+    "country": "Oman",
+    "continent": "Middle East",
+    "image": "https://images.unsplash.com/photo-1580674235078-71e3a152c938?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Riyadh",
+    "country": "Saudi Arabia",
+    "continent": "Middle East",
+    "image": "https://images.unsplash.com/photo-1580674235078-71e3a152c938?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Jeddah",
+    "country": "Saudi Arabia",
+    "continent": "Middle East",
+    "image": "https://images.unsplash.com/photo-1580674235078-71e3a152c938?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Amman",
+    "country": "Jordan",
+    "continent": "Middle East",
+    "image": "https://images.unsplash.com/photo-1549877452-9c387ad64b4a?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  },
+  {
+    "city": "Petra",
+    "country": "Jordan",
+    "continent": "Middle East",
+    "image": "https://images.unsplash.com/photo-1549877452-9c387ad64b4a?auto=format&fit=crop&w=800&q=80",
+    "category": "Adventure"
+  },
+  {
+    "city": "Jerusalem",
+    "country": "Israel",
+    "continent": "Middle East",
+    "image": "https://images.unsplash.com/photo-1549877452-9c387ad64b4a?auto=format&fit=crop&w=800&q=80",
+    "category": "Cultural"
+  }
+]
