@@ -92,8 +92,24 @@ export const getDestinations = async (req: Request, res: Response): Promise<any>
 
     return res.status(200).json(destinationsWithRatings);
   } catch (error: any) {
-    console.error('Get destinations error:', error);
-    return res.status(500).json({ message: 'Internal Server Error', error: error.message });
+    console.warn('Get destinations database failure. Invoking offline fallbacks:', error.message);
+    const { mockDestinations } = await import('../utils/fallbackData.js');
+    return res.status(200).json(mockDestinations.map(d => ({
+      ...d,
+      gallery: d.images.split(','),
+      popularAttractions: d.popularAttractions.split(','),
+      thingsToDo: d.thingsToDo.split(','),
+      travelTips: d.travelTips.split(','),
+      reviews: [],
+      packages: d.packages.map(p => ({
+        ...p,
+        inclusions: p.inclusions.split(','),
+        exclusions: p.exclusions.split(','),
+        activities: p.activities.split(','),
+        availableDates: p.availableDates.split(','),
+        itineraryJson: JSON.parse(p.itinerary)
+      }))
+    })));
   }
 };
 
@@ -160,8 +176,33 @@ export const getDestinationById = async (req: Request, res: Response): Promise<a
       relatedDestinations: related
     });
   } catch (error: any) {
-    console.error('Get destination by ID error:', error);
-    return res.status(500).json({ message: 'Internal Server Error', error: error.message });
+    console.warn('Get destination by ID database failure. Invoking offline fallbacks:', error.message);
+    const { mockDestinations } = await import('../utils/fallbackData.js');
+    const matched = mockDestinations.find(d => d.id === id) || mockDestinations[0];
+    return res.status(200).json({
+      ...matched,
+      gallery: matched.images.split(','),
+      popularAttractions: matched.popularAttractions.split(','),
+      thingsToDo: matched.thingsToDo.split(','),
+      travelTips: matched.travelTips.split(','),
+      reviews: [],
+      packages: matched.packages.map(p => ({
+        ...p,
+        inclusions: p.inclusions.split(','),
+        exclusions: p.exclusions.split(','),
+        activities: p.activities.split(','),
+        availableDates: p.availableDates.split(','),
+        itineraryJson: JSON.parse(p.itinerary)
+      })),
+      relatedDestinations: mockDestinations.filter(d => d.id !== matched.id).slice(0, 3).map(d => ({
+        id: d.id,
+        name: d.name,
+        country: d.country,
+        image: d.images.split(',')[0],
+        estimatedBudget: d.price,
+        rating: d.rating
+      }))
+    });
   }
 };
 

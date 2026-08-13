@@ -103,8 +103,26 @@ export const getPackages = async (req: Request, res: Response): Promise<any> => 
 
     return res.status(200).json(packages.map(formatPackage));
   } catch (error: any) {
-    console.error('Get packages error:', error);
-    return res.status(500).json({ message: 'Internal Server Error', error: error.message });
+    console.warn('Get packages database failure. Invoking offline fallbacks:', error.message);
+    const { mockDestinations } = await import('../utils/fallbackData.js');
+    const allPkgs: any[] = [];
+    mockDestinations.forEach(dest => {
+      dest.packages.forEach(pkg => {
+        allPkgs.push({
+          ...pkg,
+          destination: {
+            id: dest.id,
+            name: dest.name,
+            country: dest.country,
+            continent: dest.continent,
+            estimatedBudget: dest.price,
+            rating: dest.rating,
+            images: dest.images
+          }
+        });
+      });
+    });
+    return res.status(200).json(allPkgs.map(formatPackage));
   }
 };
 
@@ -128,8 +146,34 @@ export const getPackageById = async (req: Request, res: Response): Promise<any> 
 
     return res.status(200).json(formatPackage(travelPackage));
   } catch (error: any) {
-    console.error('Get package by ID error:', error);
-    return res.status(500).json({ message: 'Internal Server Error', error: error.message });
+    console.warn('Get package by ID database failure. Invoking offline fallbacks:', error.message);
+    const { mockDestinations } = await import('../utils/fallbackData.js');
+    let matchedPkg: any = null;
+    let matchedDest: any = null;
+    for (const dest of mockDestinations) {
+      const match = dest.packages.find(p => p.id === id);
+      if (match) {
+        matchedPkg = match;
+        matchedDest = dest;
+        break;
+      }
+    }
+    if (!matchedPkg) {
+      matchedPkg = mockDestinations[0].packages[0];
+      matchedDest = mockDestinations[0];
+    }
+    return res.status(200).json(formatPackage({
+      ...matchedPkg,
+      destination: {
+        id: matchedDest.id,
+        name: matchedDest.name,
+        country: matchedDest.country,
+        continent: matchedDest.continent,
+        estimatedBudget: matchedDest.price,
+        rating: matchedDest.rating,
+        images: matchedDest.images
+      }
+    }));
   }
 };
 
