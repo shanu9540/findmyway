@@ -8,7 +8,9 @@ import { Star, MapPin, Calendar, Heart, ShieldAlert, Sparkles, AlertCircle, Clou
 
 const API_URL = typeof window === 'undefined'
   ? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}/api` : 'http://localhost:5000/api')
-  : (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api');
+  : (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+      ? 'http://localhost:5000/api'
+      : 'https://backend-blue-psi-76.vercel.app/api');
 
 export default function DestinationDetailPage() {
   const params = useParams();
