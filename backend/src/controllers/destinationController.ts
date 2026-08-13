@@ -285,6 +285,91 @@ export const getDestinationById = async (req: Request, res: Response): Promise<a
     console.warn('Get destination by ID database failure. Invoking offline fallbacks:', error.message);
     const { mockDestinations } = await import('../utils/fallbackData.js');
     const matched = mockDestinations.find(d => d.id === id) || mockDestinations[0];
+    
+    let resultPackages = matched.packages && matched.packages.length > 0 ? matched.packages.map((p: any) => ({
+      ...p,
+      inclusions: p.inclusions ? p.inclusions.split(',') : [],
+      exclusions: p.exclusions ? p.exclusions.split(',') : [],
+      activities: p.activities ? p.activities.split(',') : [],
+      availableDates: p.availableDates ? p.availableDates.split(',') : [],
+      itineraryJson: p.itinerary ? JSON.parse(p.itinerary) : null
+    })) : [];
+
+    if (resultPackages.length === 0) {
+      resultPackages = [
+        {
+          id: `pkg-${matched.id}-1`,
+          destinationId: matched.id,
+          title: `${matched.name} Classic Highlight Tour`,
+          image: matched.image || 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=800&q=80',
+          gallery: matched.gallery || '',
+          description: `Experience the best landmarks, sightseeing spots, and cultural highlights of ${matched.name} on this premium custom tour.`,
+          duration: 5,
+          nights: 4,
+          pricePerAdult: Math.round(matched.estimatedBudget * 1.2),
+          pricePerChild: Math.round(matched.estimatedBudget * 0.8),
+          originalPrice: Math.round(matched.estimatedBudget * 1.5),
+          discount: 20,
+          rating: matched.rating || 4.5,
+          reviewCount: matched.reviewCount || 12,
+          category: 'Cultural',
+          availableDates: '2026-10-15, 2026-11-20',
+          hotel: `${matched.name} Grand Palace & Suites`,
+          meals: 'Daily Breakfast & Dinner Included',
+          transportation: 'Private AC Cab Transfers',
+          activities: 'Guided Sightseeing, Monument Entry, Heritage Walks',
+          inclusions: ['4-Star Premium Hotel', 'Sightseeing Entry Tickets', 'Daily Breakfast & Dinner', 'Private Airport Transfers'],
+          exclusions: ['Flights', 'Lunch', 'Personal shopping expenses'],
+          itineraryJson: {
+            destination: matched.name,
+            daysCount: 5,
+            totalEstimatedCost: Math.round(matched.estimatedBudget * 1.2),
+            itinerary: [
+              { day: 1, theme: `Arrival in ${matched.name}`, activities: [{ time: 'Morning', activity: 'Arrival & check-in to resort', location: `${matched.name} Grand Palace`, cost: 0 }, { time: 'Evening', activity: 'Sunset Leisure Walk', location: 'City Center', cost: 0 }] },
+              { day: 2, theme: 'Guided Landmark Excursion', activities: [{ time: 'Morning', activity: 'Scenic sightseeing tour of top attractions', location: matched.name, cost: 0 }] },
+              { day: 3, theme: 'Cultural Highlights & Markets', activities: [{ time: 'Morning', activity: 'Explore local traditional markets and foods', location: 'Local Bazaars', cost: 0 }] },
+              { day: 4, theme: 'Leisure Day & Shopping', activities: [{ time: 'Morning', activity: 'Self-guided walks and souvenir shopping', location: 'Local Area', cost: 0 }] },
+              { day: 5, theme: 'Departure Transfers', activities: [{ time: 'Morning', activity: 'Check-out & airport drop-off transfers', location: 'Airport', cost: 0 }] }
+            ]
+          }
+        },
+        {
+          id: `pkg-${matched.id}-2`,
+          destinationId: matched.id,
+          title: `${matched.name} Premium Adventure Getaway`,
+          image: matched.image || 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=800&q=80',
+          gallery: matched.gallery || '',
+          description: `An immersive premium vacation package showcasing the stunning views, top excursions, and hidden gems of ${matched.name}.`,
+          duration: 3,
+          nights: 2,
+          pricePerAdult: Math.round(matched.estimatedBudget * 0.9),
+          pricePerChild: Math.round(matched.estimatedBudget * 0.6),
+          originalPrice: Math.round(matched.estimatedBudget * 1.1),
+          discount: 15,
+          rating: matched.rating || 4.6,
+          reviewCount: matched.reviewCount || 8,
+          category: 'Adventure',
+          availableDates: '2026-10-25, 2026-12-05',
+          hotel: `${matched.name} Heritage Resort`,
+          meals: 'Daily Breakfast Included',
+          transportation: 'Dedicated AC Transport',
+          activities: 'Adventure Treks, Local Explorations, Photography',
+          inclusions: ['4-Star Heritage Stay', 'Guided Trekking Excursion', 'Daily Breakfast Buffet', 'Railway/Airport Transfers'],
+          exclusions: ['Flights', 'Lunch & Dinner', 'Personal shopping'],
+          itineraryJson: {
+            destination: matched.name,
+            daysCount: 3,
+            totalEstimatedCost: Math.round(matched.estimatedBudget * 0.9),
+            itinerary: [
+              { day: 1, theme: 'Welcome & Resort Briefing', activities: [{ time: 'Morning', activity: 'Arrival & check-in', location: 'Resort lobby', cost: 0 }] },
+              { day: 2, theme: 'Adventure Activity Day', activities: [{ time: 'Morning', activity: 'Guided local adventure activity', location: matched.name, cost: 0 }] },
+              { day: 3, theme: 'Farewell Transfers', activities: [{ time: 'Morning', activity: 'Check-out & departure transfers', location: 'Airport', cost: 0 }] }
+            ]
+          }
+        }
+      ];
+    }
+
     return res.status(200).json({
       ...matched,
       gallery: matched.gallery ? matched.gallery.split(',') : [],
@@ -292,14 +377,7 @@ export const getDestinationById = async (req: Request, res: Response): Promise<a
       thingsToDo: matched.thingsToDo ? matched.thingsToDo.split(',') : [],
       travelTips: matched.travelTips ? matched.travelTips.split(',') : [],
       reviews: [],
-      packages: matched.packages ? matched.packages.map((p: any) => ({
-        ...p,
-        inclusions: p.inclusions ? p.inclusions.split(',') : [],
-        exclusions: p.exclusions ? p.exclusions.split(',') : [],
-        activities: p.activities ? p.activities.split(',') : [],
-        availableDates: p.availableDates ? p.availableDates.split(',') : [],
-        itineraryJson: p.itinerary ? JSON.parse(p.itinerary) : null
-      })) : [],
+      packages: resultPackages,
       relatedDestinations: mockDestinations.filter(d => d.id !== matched.id).slice(0, 3).map(d => ({
         id: d.id,
         name: d.name,
