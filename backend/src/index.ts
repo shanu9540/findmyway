@@ -81,13 +81,11 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
   });
 });
 
-import serverless from 'serverless-http';
-
 // Start Server locally
-if (process.env.NETLIFY !== 'true') {
+if (process.env.VERCEL !== '1' && process.env.NETLIFY !== 'true') {
   app.listen(PORT, () => {
     console.log(`🚀 Server running on port ${PORT}`);
   });
 }
 
-export const handler = serverless(app);
+export default app;
