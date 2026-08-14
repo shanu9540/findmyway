@@ -293,17 +293,15 @@ export default function PackageDetailPage() {
               {/* Travel Date */}
               <div>
                 <label className="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">Travel Date</label>
-                <select
+                <input
+                  type="date"
                   value={travelDate}
+                  min="2026-01-01"
+                  max="2031-12-31"
                   onChange={(e) => setTravelDate(e.target.value)}
                   required
                   className="w-full bg-slate-50 border border-slate-200 text-slate-800 rounded-lg py-2 px-3 text-sm focus:outline-none focus:border-teal-500 focus:bg-white transition"
-                >
-                  <option value="">Select Date</option>
-                  {dates.map((d: string) => (
-                    <option key={d} value={d}>{new Date(d).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</option>
-                  ))}
-                </select>
+                />
               </div>
 
               {/* Guest Counts */}

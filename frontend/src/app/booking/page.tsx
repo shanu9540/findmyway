@@ -329,28 +329,17 @@ function BookingPageContent() {
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Travel Date</label>
-                  {travelPackage.availableDates && travelPackage.availableDates.length > 0 ? (
-                    <select
-                      value={travelDate}
-                      onChange={(e) => setTravelDate(e.target.value)}
-                      required
-                      className="w-full bg-[#F9FAFB] border border-slate-200 text-slate-800 rounded-lg py-2 px-3 text-xs focus:outline-none focus:border-teal-500"
-                    >
-                      {travelPackage.availableDates.map((d: string) => (
-                        <option key={d} value={d}>
-                          {new Date(d).toLocaleDateString('en-IN')}
-                        </option>
-                      ))}
-                    </select>
-                  ) : (
-                    <input
-                      type="text"
-                      disabled
-                      value="10/12/2026"
-                      className="w-full bg-[#F9FAFB] border border-slate-200 rounded-lg py-2 px-3 text-xs text-slate-400"
-                    />
-                  )}
+                  <input
+                    type="date"
+                    value={travelDate}
+                    min="2026-01-01"
+                    max="2031-12-31"
+                    onChange={(e) => setTravelDate(e.target.value)}
+                    required
+                    className="w-full bg-[#F9FAFB] border border-slate-200 text-slate-800 rounded-lg py-2 px-3 text-xs focus:outline-none focus:border-teal-500"
+                  />
                 </div>
+
               </div>
             </div>
 
