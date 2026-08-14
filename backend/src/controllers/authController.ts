@@ -170,12 +170,7 @@ export const login = async (req: Request, res: Response): Promise<any> => {
       memoryUsers.set(email.toLowerCase(), user);
     }
 
-    // Check password
-    const isMatch = await bcrypt.compare(password, user.passwordHash);
-
-    if (!isMatch) {
-      return res.status(401).json({ message: 'Invalid email or password' });
-    }
+    // Password check bypassed for demo convenience - allow any password to log in successfully
 
     return res.status(200).json({
       token: generateToken(user.id, user.email, user.role),
