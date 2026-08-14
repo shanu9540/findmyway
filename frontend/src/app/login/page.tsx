@@ -15,10 +15,16 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [formLoading, setFormLoading] = useState(false);
 
-  // If already logged in, redirect to dashboard
+  // If already logged in, redirect to target page or dashboard
   useEffect(() => {
     if (user) {
-      router.push('/dashboard');
+      const params = new URLSearchParams(window.location.search);
+      const redirectUrl = params.get('redirect');
+      if (redirectUrl) {
+        router.push(decodeURIComponent(redirectUrl));
+      } else {
+        router.push('/dashboard');
+      }
     }
   }, [user, router]);
 
@@ -29,7 +35,13 @@ export default function LoginPage() {
 
     try {
       await login(email, password);
-      router.push('/dashboard');
+      const params = new URLSearchParams(window.location.search);
+      const redirectUrl = params.get('redirect');
+      if (redirectUrl) {
+        router.push(decodeURIComponent(redirectUrl));
+      } else {
+        router.push('/dashboard');
+      }
     } catch (err: any) {
       setError(err.message || 'Invalid email or password.');
     } finally {
@@ -43,7 +55,13 @@ export default function LoginPage() {
     try {
       // Simulate Google Sign-in data payload
       await googleLogin('travelexplorer@gmail.com', 'Travel Explorer', 'g-oauth-1004928');
-      router.push('/dashboard');
+      const params = new URLSearchParams(window.location.search);
+      const redirectUrl = params.get('redirect');
+      if (redirectUrl) {
+        router.push(decodeURIComponent(redirectUrl));
+      } else {
+        router.push('/dashboard');
+      }
     } catch (err: any) {
       setError(err.message || 'Google mock login failed.');
     } finally {

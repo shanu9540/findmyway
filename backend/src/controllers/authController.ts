@@ -15,7 +15,8 @@ interface MemoryUser {
   passwordHash: string;
   role: string;
 }
-const memoryUsers = new Map<string, MemoryUser>();
+
+export const memoryUsers = new Map<string, MemoryUser>();
 
 // Prepopulate with a default demo user
 const salt = bcrypt.genSaltSync(10);
