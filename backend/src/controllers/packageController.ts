@@ -24,17 +24,19 @@ const formatPackage = (pkg: any) => {
 // @route   GET /api/packages
 // @access  Public
 export const getPackages = async (req: Request, res: Response): Promise<any> => {
+  const { 
+    search,
+    destinationId, 
+    category, 
+    country, 
+    continent, 
+    maxPrice, 
+    duration,
+    rating,
+    sortBy 
+  } = req.query;
+
   try {
-    const { 
-      destinationId, 
-      category, 
-      country, 
-      continent, 
-      maxPrice, 
-      duration,
-      rating,
-      sortBy 
-    } = req.query;
 
     const filter: any = {};
 
@@ -63,6 +65,16 @@ export const getPackages = async (req: Request, res: Response): Promise<any> => 
 
     if (rating) {
       filter.rating = { gte: parseFloat(String(rating)) };
+    }
+
+    if (search) {
+      filter.OR = [
+        { title: { contains: String(search) } },
+        { description: { contains: String(search) } },
+        { destination: { name: { contains: String(search) } } },
+        { destination: { city: { contains: String(search) } } },
+        { destination: { country: { contains: String(search) } } }
+      ];
     }
 
     // Destination filters (relation queries)
@@ -106,10 +118,42 @@ export const getPackages = async (req: Request, res: Response): Promise<any> => 
     console.warn('Get packages database failure. Invoking offline fallbacks:', error.message);
     const { mockDestinations } = await import('../utils/fallbackData.js');
     const allPkgs: any[] = [];
+
     mockDestinations.forEach(dest => {
-      dest.packages.forEach((pkg: any) => {
-        allPkgs.push({
-          ...pkg,
+      const budget = dest.estimatedBudget || 15000;
+      
+      const destPkgs = [
+        {
+          id: `pkg-${dest.id}-1`,
+          destinationId: dest.id,
+          title: `${dest.name} Classic Highlight Tour`,
+          image: dest.image || 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=800&q=80',
+          gallery: dest.gallery || '',
+          description: `Experience the best landmarks, sightseeing spots, and cultural highlights of ${dest.name} on this premium custom tour.`,
+          duration: 5,
+          nights: 4,
+          pricePerAdult: Math.round(budget * 1.2),
+          pricePerChild: Math.round(budget * 0.8),
+          originalPrice: Math.round(budget * 1.5),
+          discount: 20,
+          rating: dest.rating || 4.5,
+          reviewCount: dest.reviewCount || 12,
+          category: 'Cultural',
+          availableDates: '2026-10-15, 2026-11-20',
+          hotel: `${dest.name} Grand Palace & Suites`,
+          meals: 'Daily Breakfast & Dinner Included',
+          transportation: 'Private AC Cab Transfers',
+          activities: 'Guided Sightseeing, Monument Entry, Heritage Walks',
+          inclusions: '4-Star Premium Hotel,Sightseeing Entry Tickets,Daily Breakfast & Dinner,Private Airport Transfers',
+          exclusions: 'Flights,Lunch,Personal shopping expenses',
+          itinerary: JSON.stringify({
+            destination: dest.name,
+            daysCount: 5,
+            totalEstimatedCost: Math.round(budget * 1.2),
+            itinerary: [
+              { day: 1, theme: `Arrival in ${dest.name}`, activities: [{ time: 'Morning', activity: 'Arrival & check-in to resort', location: `${dest.name} Grand Palace`, cost: 0 }] }
+            ]
+          }),
           destination: {
             id: dest.id,
             name: dest.name,
@@ -119,10 +163,116 @@ export const getPackages = async (req: Request, res: Response): Promise<any> => 
             rating: dest.rating,
             image: dest.image
           }
-        });
-      });
+        },
+        {
+          id: `pkg-${dest.id}-2`,
+          destinationId: dest.id,
+          title: `${dest.name} Premium Adventure Getaway`,
+          image: dest.image || 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=800&q=80',
+          gallery: dest.gallery || '',
+          description: `An immersive premium vacation package showcasing the stunning views, top excursions, and hidden gems of ${dest.name}.`,
+          duration: 3,
+          nights: 2,
+          pricePerAdult: Math.round(budget * 0.9),
+          pricePerChild: Math.round(budget * 0.6),
+          originalPrice: Math.round(budget * 1.1),
+          discount: 15,
+          rating: dest.rating || 4.6,
+          reviewCount: dest.reviewCount || 8,
+          category: 'Adventure',
+          availableDates: '2026-10-25, 2026-12-05',
+          hotel: `${dest.name} Heritage Resort`,
+          meals: 'Daily Breakfast Included',
+          transportation: 'Dedicated AC Transport',
+          activities: 'Adventure Treks, Local Explorations, Photography',
+          inclusions: '4-Star Heritage Stay,Guided Trekking Excursion,Daily Breakfast Buffet,Railway/Airport Transfers',
+          exclusions: 'Flights,Lunch & Dinner,Personal shopping',
+          itinerary: JSON.stringify({
+            destination: dest.name,
+            daysCount: 3,
+            totalEstimatedCost: Math.round(budget * 0.9),
+            itinerary: [
+              { day: 1, theme: 'Welcome & Resort Briefing', activities: [{ time: 'Morning', activity: 'Arrival & check-in', location: 'Resort lobby', cost: 0 }] }
+            ]
+          }),
+          destination: {
+            id: dest.id,
+            name: dest.name,
+            country: dest.country,
+            continent: dest.continent,
+            estimatedBudget: dest.estimatedBudget,
+            rating: dest.rating,
+            image: dest.image
+          }
+        }
+      ];
+
+      allPkgs.push(...destPkgs);
     });
-    return res.status(200).json(allPkgs.map(formatPackage));
+
+    // Apply filtering dynamically
+    let filtered = allPkgs;
+
+    if (search) {
+      const q = String(search).toLowerCase();
+      filtered = filtered.filter(p => 
+        p.title.toLowerCase().includes(q) || 
+        p.description.toLowerCase().includes(q) || 
+        p.destination.name.toLowerCase().includes(q) || 
+        p.destination.country.toLowerCase().includes(q)
+      );
+    }
+
+    if (destinationId) {
+      filtered = filtered.filter(p => p.destinationId === String(destinationId));
+    }
+
+    if (category) {
+      filtered = filtered.filter(p => p.category.toLowerCase() === String(category).toLowerCase());
+    }
+
+    if (country) {
+      filtered = filtered.filter(p => p.destination.country.toLowerCase() === String(country).toLowerCase());
+    }
+
+    if (continent) {
+      filtered = filtered.filter(p => p.destination.continent.toLowerCase() === String(continent).toLowerCase());
+    }
+
+    if (maxPrice) {
+      filtered = filtered.filter(p => p.pricePerAdult <= parseFloat(String(maxPrice)));
+    }
+
+    if (duration) {
+      const dur = String(duration);
+      if (dur === 'short') {
+        filtered = filtered.filter(p => p.duration <= 3);
+      } else if (dur === 'medium') {
+        filtered = filtered.filter(p => p.duration >= 4 && p.duration <= 6);
+      } else if (dur === 'long') {
+        filtered = filtered.filter(p => p.duration >= 7);
+      }
+    }
+
+    if (rating) {
+      filtered = filtered.filter(p => p.rating >= parseFloat(String(rating)));
+    }
+
+    // Apply sorting
+    if (sortBy) {
+      const sort = String(sortBy);
+      if (sort === 'price_asc') {
+        filtered.sort((a, b) => a.pricePerAdult - b.pricePerAdult);
+      } else if (sort === 'price_desc') {
+        filtered.sort((a, b) => b.pricePerAdult - a.pricePerAdult);
+      } else if (sort === 'rating') {
+        filtered.sort((a, b) => b.rating - a.rating);
+      } else if (sort === 'popularity') {
+        filtered.sort((a, b) => b.reviewCount - a.reviewCount);
+      }
+    }
+
+    return res.status(200).json(filtered.map(formatPackage));
   }
 };
 
