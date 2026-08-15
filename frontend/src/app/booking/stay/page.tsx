@@ -59,7 +59,7 @@ function StayBookingPageContent() {
           }
         });
 
-        if (res.status === 401 || res.status === 404) {
+        if (res.status === 401) {
           logout();
           router.push(`/login?redirect=${encodeURIComponent(window.location.pathname + window.location.search)}`);
           return;
@@ -161,7 +161,7 @@ function StayBookingPageContent() {
         // Redirect to booking dashboard confirmation
         router.push(`/dashboard?tab=bookings&bookingSuccess=true&pnr=${data.providerReference}&orderId=${data.bookingId}`);
       } else {
-        if (response.status === 401 || response.status === 404 || data.message === 'User not found or deleted') {
+        if (response.status === 401 || data.message === 'User not found or deleted') {
           logout();
           setShowUserNotFoundError(true);
         } else {

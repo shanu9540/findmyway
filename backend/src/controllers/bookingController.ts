@@ -97,16 +97,59 @@ export const createBooking = async (req: Request, res: Response): Promise<any> =
     }
 
     if (!travelPackage) {
-      // Look up package in mockDestinations
-      const { mockDestinations } = await import('../utils/fallbackData.js');
-      for (const dest of mockDestinations) {
-        const match = dest.packages.find((p: any) => p.id === packageId);
-        if (match) {
-          travelPackage = {
-            ...(match as any),
-            destination: dest
-          };
-          break;
+      // Reconstruct package dynamically based on the package ID syntax
+      if (packageId && packageId.startsWith('pkg-')) {
+        try {
+          const { mockDestinations } = await import('../utils/fallbackData.js');
+          const parts = packageId.split('-');
+          const isPkg2 = packageId.endsWith('-2');
+          const destId = parts.slice(1, -1).join('-');
+          
+          let matchedDest: any = null;
+          try {
+            matchedDest = await prisma.destination.findUnique({ where: { id: destId } });
+          } catch (e) {}
+
+          if (!matchedDest) {
+            matchedDest = mockDestinations.find((d: any) => d.id === destId);
+          }
+
+          if (matchedDest) {
+            const budget = matchedDest.estimatedBudget || 15000;
+            travelPackage = !isPkg2 ? {
+              id: packageId,
+              destinationId: matchedDest.id,
+              title: `${matchedDest.name} Classic Highlight Tour`,
+              image: matchedDest.image || 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=800&q=80',
+              description: `Experience the best landmarks, sightseeing spots, and cultural highlights of ${matchedDest.name} on this premium custom tour.`,
+              duration: 5,
+              nights: 4,
+              pricePerAdult: Math.round(budget * 1.2),
+              pricePerChild: Math.round(budget * 0.8),
+              originalPrice: Math.round(budget * 1.5),
+              discount: 20,
+              rating: matchedDest.rating || 4.5,
+              category: 'Cultural',
+              destination: matchedDest
+            } : {
+              id: packageId,
+              destinationId: matchedDest.id,
+              title: `${matchedDest.name} Premium Adventure Getaway`,
+              image: matchedDest.image || 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=800&q=80',
+              description: `An immersive premium vacation package showcasing the stunning views, top excursions, and hidden gems of ${matchedDest.name}.`,
+              duration: 3,
+              nights: 2,
+              pricePerAdult: Math.round(budget * 0.9),
+              pricePerChild: Math.round(budget * 0.6),
+              originalPrice: Math.round(budget * 1.1),
+              discount: 15,
+              rating: matchedDest.rating || 4.6,
+              category: 'Adventure',
+              destination: matchedDest
+            };
+          }
+        } catch (err) {
+          console.error('[createBooking] Fallback packages generation failed:', err);
         }
       }
     }

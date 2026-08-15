@@ -126,7 +126,7 @@ function FlightBookingPageContent() {
       if (!response.ok) {
         const errJson = await response.json();
         // If user not found, deleted, or token invalid, handle explicitly
-        if (response.status === 401 || response.status === 404 || errJson.message === 'User not found or deleted') {
+        if (response.status === 401 || errJson.message === 'User not found or deleted') {
           logout(); // Clear stale user tokens and session data!
           setError('Your user session is invalid or has been deleted. Please login to continue.');
           setBookingLoading(false);

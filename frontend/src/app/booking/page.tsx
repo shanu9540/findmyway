@@ -69,7 +69,7 @@ function BookingPageContent() {
           }
         });
 
-        if (res.status === 401 || res.status === 404) {
+        if (res.status === 401) {
           logout(); // Clear stale user tokens and session data!
           router.push('/login?redirect=' + encodeURIComponent(`/booking?packageId=${packageId}&travelDate=${initialDate}&adults=${initialAdults}&children=${initialChildren}&rooms=${initialRooms}`));
           return;
@@ -172,7 +172,7 @@ function BookingPageContent() {
       if (response.ok) {
         router.push(`/booking/mock-pay?bookingId=${data.booking.id}`);
       } else {
-        if (response.status === 401 || response.status === 404 || data.message === 'User not found or deleted') {
+        if (response.status === 401 || data.message === 'User not found or deleted') {
           logout();
           setShowUserNotFoundError(true);
         } else {
